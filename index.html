@@ -6,17 +6,6 @@
   <title>Leinewerk – Lasergravur & 3D-Druck</title>
   <meta name="description" content="Handgemachte Lasergravuren, 3D-Bauteile und ehrliches Design – Leinewerk.">
   <meta name="theme-color" content="#0e402e">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Leinewerk – Lasergravur & 3D-Druck">
-  <meta property="og:description" content="Handgemachte Lasergravuren, 3D-Bauteile und ehrliches Design – Leinewerk.">
-  <meta property="og:image" content="assets/og-image.png">
-  <meta property="og:type" content="website">
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Leinewerk – Lasergravur & 3D-Druck">
-  <meta name="twitter:description" content="Handgemachte Lasergravuren, 3D-Bauteile und ehrliches Design – Leinewerk.">
-  <meta name="twitter:image" content="assets/og-image.png">
-  <link rel="preload" href="assets/logo.svg" as="image">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 </head>
@@ -32,6 +21,7 @@
         <li><a href="#beispiele" class="nav-link">Beispiele</a></li>
         <li><a href="#ueber-mich" class="nav-link">Über mich</a></li>
         <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+        <li><a href="#auftrag-chat" class="nav-link">Chat-Auftrag</a></li>
       </ul>
       <a href="#kontakt" class="btn btn-primary nav-cta">Anfrage starten</a>
     </nav>
@@ -48,6 +38,7 @@
         <div class="hero-actions">
           <a href="#kontakt" class="btn btn-primary btn-lg">Anfrage starten</a>
           <a href="https://wa.me/4917681419966?text=Hi%20Leinewerk%2C%20ich%20habe%20eine%20Anfrage%E2%80%A6" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">WhatsApp schreiben</a>
+          <a href="https://t.me/maikskibot" class="btn btn-ghost btn-lg" target="_blank" rel="noopener">Telegram schreiben</a>
         </div>
       </div>
     </section>
@@ -104,17 +95,7 @@
     <section id="ueber-mich" class="ueber-mich section">
       <h2 class="section-title">Über mich</h2>
       <p class="about-text">
-        Ich bin Maik – Handwerker aus Überzeugung und Tüftler aus Leidenschaft.
-Ich mag es, wenn Arbeit ehrlich ist, Kanten sauber sind und jedes Detail stimmt.
-Bei Leinewerk geht es nicht um Masse oder schnelle Effekte – hier zählt Präzision, Beständigkeit und das gute Gefühl, etwas Solides in den Händen zu halten.
-
-Meine Werkzeuge sind Laser und 3D-Druck – moderne Technik, mit der sich Ideen in greifbare Realität verwandeln lassen.
-Ob Gravur auf warmem Holz, feine Linien auf Leder oder passgenaue Bauteile aus robustem Material: Jede Arbeit ist ein Unikat, gefertigt mit Ruhe, Sorgfalt und einem Auge fürs Wesentliche.
-
-Für mich bedeutet Handwerk mehr als nur Herstellen – es ist das Zusammenspiel von Idee, Material und Mensch.
-Bei mir bekommst du keine Show, sondern Arbeit, die funktioniert, hält und genau das erfüllt, was sie verspricht.
-
-
+        Ich bin Maik. Ich mag saubere Kanten, klare Ergebnisse und ehrliche Arbeit. Bei Leinewerk verbinde ich Handwerk mit Digital-Fertigung: Laser für Charakter, 3D-Druck für Präzision. Du bekommst keine Show – du bekommst etwas, das funktioniert und hält.
       </p>
     </section>
 
@@ -143,18 +124,124 @@ Bei mir bekommst du keine Show, sondern Arbeit, die funktioniert, hält und gena
       <div class="direkt-links">
         <a href="mailto:info@maiks-mobiler-fahrradservice.de" class="kontakt-link">E-Mail senden</a>
         <a href="https://wa.me/4917681419966?text=Hi%20Leinewerk%2C%20ich%20habe%20eine%20Anfrage%E2%80%A6" target="_blank" rel="noopener" class="kontakt-link">WhatsApp schreiben</a>
+        <a href="https://t.me/maikskibot" target="_blank" rel="noopener" class="kontakt-link">Telegram schreiben</a>
       </div>
+    </section>
+
+    <section id="auftrag-chat" class="auftrag-chat section-alt">
+      <h2>Chat-Auftrag stellen</h2>
+      <form id="auftragForm" action="https://formspree.io/f/mgvzdbwv" method="POST" class="chat-form">
+        <div class="chat-step" id="step1">
+          <label for="chatName">Hi, wie heißt du?</label>
+          <input type="text" id="chatName" name="name" required>
+          <button type="button" onclick="nextStep(1)">Weiter</button>
+        </div>
+        <div class="chat-step" id="step2" style="display:none;">
+          <label for="chatTyp">Was möchtest du bestellen oder anfragen?</label>
+          <input type="text" id="chatTyp" name="typ" required>
+          <button type="button" onclick="nextStep(2)">Weiter</button>
+        </div>
+        <div class="chat-step" id="step3" style="display:none;">
+          <label for="chatDetails">Erzähl mir mehr (Material, Maße, Idee)?</label>
+          <textarea id="chatDetails" name="details" required></textarea>
+          <button type="button" onclick="nextStep(3)">Weiter</button>
+        </div>
+        <div class="chat-step" id="step4" style="display:none;">
+          <label for="chatEmail">Wie kann ich dich erreichen (E-Mail)?</label>
+          <input type="email" id="chatEmail" name="email" required>
+          <button type="submit">Abschicken</button>
+        </div>
+        <p class="chat-dsgvo">Deine Daten werden nur zur Bearbeitung deiner Anfrage verwendet.</p>
+      </form>
+      <div id="chatStatus"></div>
     </section>
   </main>
   <footer class="footer" aria-label="Footer">
     <small>
       © <span id="jahr"></span> Leinewerk · Handgemacht mit Laserkraft &amp; 3D-Druck
       <span class="footer-links">
-        <a href="#" aria-label="Datenschutz (Platzhalter)">Datenschutz</a> ·
-        <a href="#" aria-label="Impressum (Platzhalter)">Impressum</a>
+        <a href="datenschutz.html" aria-label="Datenschutz">Datenschutz</a> ·
+        <a href="impressum.html">Impressum</a>
       </span>
     </small>
   </footer>
   <script src="script.js"></script>
+  <script>
+    // Header Scroll-Logik: transparent → solid
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 8) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Aktiver Nav-Link beim Scrollen
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = ['hero', 'leistungen', 'beispiele', 'ueber-mich', 'kontakt', 'auftrag-chat'];
+    function updateActiveNav() {
+      let fromTop = window.scrollY + header.offsetHeight + 6;
+      let activeSection = sections[0];
+      for (let id of sections) {
+        const sec = document.getElementById(id);
+        if (sec && sec.offsetTop <= fromTop) activeSection = id;
+      }
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + activeSection);
+      });
+    }
+    window.addEventListener('scroll', updateActiveNav);
+    window.addEventListener('load', updateActiveNav);
+
+    // Sanftes Scrollen zu Anchors
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.setAttribute('tabindex', '-1');
+          target.focus();
+          setTimeout(() => target.removeAttribute('tabindex'), 2000);
+        }
+      });
+    });
+
+    // Automatisches Copyright-Jahr im Footer
+    const jahr = document.getElementById('jahr');
+    if (jahr) jahr.textContent = new Date().getFullYear();
+
+    // Chat-Form Steps
+    function nextStep(current) {
+      document.getElementById('step' + current).style.display = 'none';
+      document.getElementById('step' + (current + 1)).style.display = 'block';
+    }
+    // Chat-Form: Statusanzeige nach Versand
+    document.getElementById('auftragForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var form = e.target;
+      var status = document.getElementById('chatStatus');
+      status.textContent = "Versende Auftrag …";
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if(response.ok){
+          status.textContent = "Danke, Auftrag gesendet!";
+          form.reset();
+          document.querySelectorAll('.chat-step').forEach((el,i) => el.style.display = i==0?'block':'none');
+        }else{
+          status.textContent = "Fehler, bitte erneut versuchen.";
+        }
+      }).catch(()=>{
+        status.textContent = "Netzwerkfehler, prüfe deine Verbindung.";
+      });
+    });
+  </script>
 </body>
 </html>
